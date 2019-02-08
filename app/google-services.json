@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "295410930568",
+    "firebase_url": "https://camino-2606.firebaseio.com",
+    "project_id": "camino-2606",
+    "storage_bucket": "camino-2606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295410930568:android:4d756131c678270f",
+        "android_client_info": {
+          "package_name": "com.example.hlaczak.caminoapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295410930568-k3dq5i8h6nnv3sr1tqrn4e2mf9iikr4f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hlaczak.caminoapplication",
+            "certificate_hash": "093f49327e256b223d44186f54d41da7e7e16f98"
+          }
+        },
+        {
+          "client_id": "295410930568-sf3ghfe3qk2llbths2alhc88qo0i49v2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMfYlDPFusa-eO2B7H8ZfjqRO9UxR0bi8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295410930568-sf3ghfe3qk2llbths2alhc88qo0i49v2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
