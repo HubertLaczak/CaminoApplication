@@ -12,6 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoBarTheme">
+        <activity android:name=".DuringPlanning.OneCategoryBackpack"></activity>
+        <activity
+            android:name=".DuringPlanning.Backpack"
+            android:parentActivityName=".WelcomeActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,15 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
+        <activity android:name=".LoginActivity"
             android:parentActivityName=".StartActivity" />
         <activity
             android:name=".WelcomeActivity"
             android:parentActivityName=".StartActivity" />
-        <activity android:name=".DuringWalk.WeatherActivity"
+        <activity
+            android:name=".DuringWalk.WeatherActivity"
             android:parentActivityName=".WelcomeActivity" />
-
     </application>
 
 </manifest>
