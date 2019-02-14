@@ -13,7 +13,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Backpack extends AppCompatActivity {
+    private final static String TAG_1 = "First";
+    private final static String TAG_2 = "Second";
+    private final static String TAG_3 = "Third";
+    private final static String TAG_4 = "Fourth";
+
     @BindView(R.id.btn_First) Button btn_First;
+    @BindView(R.id.btn_Second) Button btn_Second;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,14 @@ public class Backpack extends AppCompatActivity {
     @OnClick(R.id.btn_First)
     public void onbtn_First(){
         Intent intent = new Intent(Backpack.this, OneCategoryBackpack.class);
-        intent.putExtra("Category", "First");
+        intent.putExtra("Category", TAG_1);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_Second)
+    public void onbtn_Second(){
+        Intent intent = new Intent(Backpack.this, OneCategoryBackpack.class);
+        intent.putExtra("Category", TAG_2);
         startActivity(intent);
     }
 }
