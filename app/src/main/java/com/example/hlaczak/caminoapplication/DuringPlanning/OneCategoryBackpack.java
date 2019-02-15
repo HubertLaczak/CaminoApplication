@@ -10,6 +10,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,23 +46,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class OneCategoryBackpack extends AppCompatActivity {
     private Button btn_Save;
     private Button btn_Exit;
 
-    private Button btn_Positive_Item;
-    private Button btn_Negative_Item;
+//    private Button btn_Positive_Item;
+//    private Button btn_Negative_Item;
+
+        @BindView(R.id.btn_Negative_Item) Button btn_Negative_Item;
+        @BindView(R.id.btn_Positive_Item) Button btn_Positive_Item;
+
 
     private FloatingActionButton floatingButton;
     private EditText et_newName;
     private TextView tv_groupName;
     private TextView tv_Amount; //Wyświetla wartość seekbar
-
-
+//    @BindView(R.id.tv_Amount) TextView tv_Amount;
+//    @BindView(R.id.seekBar) SeekBar seekBar;
     private EditText et_Weigth;
     private EditText et_Name;
     private int et_Amount;
-
 
 
     private SeekBar seekBar;
@@ -95,6 +103,8 @@ public class OneCategoryBackpack extends AppCompatActivity {
         nameView = LayoutInflater.from(OneCategoryBackpack.this).inflate(R.layout.alert_dialog,null);
         addView = LayoutInflater.from(OneCategoryBackpack.this).inflate(R.layout.add_item_dialog,null);
 
+        View view = View.inflate(getApplicationContext(), R.layout.add_item_dialog, null);
+        ButterKnife.bind(this,view);
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         category = getIntent().getExtras().getString("Category","Category Name");
 
@@ -107,10 +117,12 @@ public class OneCategoryBackpack extends AppCompatActivity {
         builderAdd.setView(addView);
         adItem = builderAdd.create();
 
+
         btn_Save = nameView.findViewById(R.id.btn_Save);
         btn_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 onSaveClick();
             }
         });
@@ -118,7 +130,8 @@ public class OneCategoryBackpack extends AppCompatActivity {
         btn_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onExitClick();
+                adName.dismiss();
+                et_newName.setText("");
             }
         });
         et_newName = nameView.findViewById(R.id.et_newName);
@@ -127,7 +140,12 @@ public class OneCategoryBackpack extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 adName.show();
-                et_newName.setText("");
+
+                if(et_newName.length()==0){
+                    btn_Save.setEnabled(false);
+                } else {
+                    btn_Save.setEnabled(true);
+                }
             }
         });
         floatingButton = findViewById(R.id.floatingButton);
@@ -138,8 +156,10 @@ public class OneCategoryBackpack extends AppCompatActivity {
             }
         });
 
-        btn_Negative_Item = findViewById(R.id.btn_Negative_Item);
-        btn_Positive_Item = findViewById(R.id.btn_Positive_Item);
+
+
+//        btn_Negative_Item = findViewById(R.id.btn_Negative_Item);
+//        btn_Positive_Item = findViewById(R.id.btn_Positive_Item);
 
         tv_Amount = addView.findViewById(R.id.tv_Amount); //textview do wyświetlania postępu seekbaru
         seekBar = addView.findViewById(R.id.seekBar);
@@ -169,6 +189,26 @@ public class OneCategoryBackpack extends AppCompatActivity {
 
         et_Weigth = addView.findViewById(R.id.et_Weigth);
         et_Name = addView.findViewById(R.id.et_Name);
+
+        et_newName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length()==0){
+                    btn_Save.setEnabled(false);
+                } else {
+                    btn_Save.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         mSingleItems = new ArrayList<>();
     }
@@ -237,15 +277,9 @@ public class OneCategoryBackpack extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(category + "GroupName", newName);
         editor.commit();
-
         Toast.makeText(this, "Zmieniono nazwę", Toast.LENGTH_SHORT).show();
         tv_groupName.setText(newName);
-
-        adName.dismiss();
-    }
-
-
-    private void onExitClick(){
+        et_newName.setText("");
         adName.dismiss();
     }
 
@@ -261,6 +295,7 @@ public class OneCategoryBackpack extends AppCompatActivity {
         DatabaseReference myRef = database.getReference(category + "ItemsList")./*.child(userid).*/child(name  + "_" + amount + "_" + weight);
 
         HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("category", category);
         hashMap.put("name", name);
         hashMap.put("amount", amount);
         hashMap.put("weigth", weight);
@@ -299,7 +334,7 @@ public class OneCategoryBackpack extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     SingleItem singleItem = snapshot.getValue(SingleItem.class);
                     mSingleItems.add(singleItem);
-                    ItemsList.add(singleItem.getAmount() + "x " + singleItem.getName() + " " + singleItem.getWeigth());
+                    ItemsList.add(singleItem.getAmount() + "x " + singleItem.getName() + " " + singleItem.getWeigth() + "g");
                 }
 
                 adapter = new ListViewAdapter(ItemsList, context);

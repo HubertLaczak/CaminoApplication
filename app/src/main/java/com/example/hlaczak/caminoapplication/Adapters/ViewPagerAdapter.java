@@ -1,4 +1,4 @@
-package com.example.hlaczak.caminoapplication.Fragments;
+package com.example.hlaczak.caminoapplication.Adapters;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

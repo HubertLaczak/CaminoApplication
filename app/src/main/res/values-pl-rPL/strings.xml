@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CaminoApplication</string>
+
+    <!--startActivity-->
+    <string name="AlertDialog_Builder_title">Dostępne języki</string>
+    <string name="startActivity_login">Zaloguj się</string>
+    <string name="startActivity_register">Zarejestruj się</string>
+
+    <!--fragmentPlanning-->
+    <string name="fragmentPlanning_backpack">Plecak</string>
+    <string name="fragmentPlanning_yourPlan">Twój Plan</string>
+    <!--fragmentDuringWalk-->
+    <string name="fragmentDuringWalk_weather">Pogoda</string>
+    <string name="fragmentDuringWalk_statistics">Statystyki</string>
+
+    <!--yourPlanActivity-->
+    <string name="yourPlan_title">Podejmij decyzję dzisiaj</string>
+    <string name="yourPlan_chooseDate">Wybierz datę</string>
+    <string name="yourPlan_string1">Kliknij aby wybrać datę</string>
+    <string name="yourPlan_string2">Wybierz Drogę!</string>
+    <string name="yourPlan_string3">Ile kilometrów?</string>
+    <string name="yourPlan_string5">Kilometry...?</string>
+    <string name="yourPlan_string4">Ile dni?</string>
+    <string name="yourPlan_string6">Dni...?</string>
+    <string name="yourPlan_string7">Ile pieniędzy odłożysz na tydzień [zł]?</string>
+    <string name="yourPlan_string8">zł/tydzień</string>
+
+    <string-array name="spiner_Ways">
+        <item>Camino Frances</item>
+        <item>Camino del Norte</item>
+        <item>Camino Primitivo</item>
+        <item>Camino Inglés</item>
+        <item>Camino Portugués</item>
+        <item>Via de La Plata</item>
+    </string-array>
+
+    <!--statisticsActivity-->
+    <string name="statisticsActivityTitle">Twoje statystyki</string>
+
+    <!--weatherActivity-->
+    <string name="weatherActivityTitle">Sprawdź pogodę</string>
+
+</resources>

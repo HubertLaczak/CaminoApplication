@@ -1,4 +1,4 @@
-package com.example.hlaczak.caminoapplication;
+package com.example.hlaczak.caminoapplication.Others;
 
 import android.app.Application;
 import android.content.Context;

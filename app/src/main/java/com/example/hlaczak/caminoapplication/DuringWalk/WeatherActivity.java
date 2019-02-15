@@ -4,24 +4,20 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.example.hlaczak.caminoapplication.Others.VolleySingleton;
 import com.example.hlaczak.caminoapplication.R;
-import com.example.hlaczak.caminoapplication.VolleySingleton;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,20 +25,29 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WeatherActivity extends AppCompatActivity {
 
     public static String API_KEY = "32830dacb0424637f399d1b37cfe05b4";
-    TextView tv_City, tv_Temperature, tv_Description, tv_WindSpeed, tv_SunSet, tv_SunRise;
-    Button btn_Get_Weather, btn_GetCoords;
-    Context mContext;
+    @BindView(R.id.tv_City) TextView tv_City;
+    @BindView(R.id.tv_Temperature) TextView tv_Temperature;
+    @BindView(R.id.tv_Description) TextView tv_Description;
+    @BindView(R.id.tv_WindSpeed) TextView tv_WindSpeed;
+    @BindView(R.id.tv_SunSet) TextView tv_SunSet;
+    @BindView(R.id.tv_SunRise) TextView tv_SunRise;
 
+    @BindView(R.id.btn_Get_Weather) Button btn_Get_Weather;
+    @BindView(R.id.btn_GetCoords) Button btn_GetCoords;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+
+    Context mContext;
     private FusedLocationProviderClient client;
 
     @Override
@@ -50,52 +55,33 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         mContext = getApplicationContext();
+        ButterKnife.bind(this);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Sprawdź Pogodę");
+        getSupportActionBar().setTitle(R.string.weatherActivityTitle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         client = LocationServices.getFusedLocationProviderClient(getApplicationContext());
+    }
 
-        tv_City = findViewById(R.id.tv_City);
-        tv_Temperature = findViewById(R.id.tv_Temperature);
-        tv_Description = findViewById(R.id.tv_Description);
-        tv_WindSpeed = findViewById(R.id.tv_WindSpeed);
-        tv_SunRise = findViewById(R.id.tv_SunRise);
-        tv_SunSet = findViewById(R.id.tv_SunSet);
+    @OnClick(R.id.btn_GetCoords)
+    public void setBtn_GetCoords(){
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-        btn_Get_Weather = findViewById(R.id.btn_Get_Weather);
-        btn_Get_Weather.setOnClickListener(new View.OnClickListener() {
+            return;
+        }
+        client.getLastLocation().addOnSuccessListener(WeatherActivity.this, new OnSuccessListener<Location>() {
             @Override
-            public void onClick(View v) {
-                checkCurrentWeather();
-            }
-        });
-
-        btn_GetCoords = findViewById(R.id.btn_GetCoords);
-        btn_GetCoords.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                    return;
+            public void onSuccess(Location o) {
+                if(o != null){
+                    tv_Temperature.setText(o.toString());
                 }
-                client.getLastLocation().addOnSuccessListener(WeatherActivity.this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location o) {
-                        if(o != null){
-                            tv_Temperature.setText(o.toString());
-                        }
-                    }
-                });
-
             }
         });
     }
 
-    private void checkCurrentWeather() {
+    @OnClick (R.id.btn_Get_Weather)
+    public void checkCurrentWeather() {
         String url = "http://api.openweathermap.org/data/2.5/weather?q=";
         String city = "Mielec";
         String URI = url + city + "&appid=" + API_KEY;

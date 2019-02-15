@@ -1,6 +1,41 @@
 <resources>
     <string name="app_name">CaminoApplication</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--startActivity-->
+    <string name="AlertDialog_Builder_title">Available languages</string>
+    <string name="startActivity_login">Login</string>
+    <string name="startActivity_register">Register</string>
+
+    <!--fragmentPlanning-->
+    <string name="fragmentPlanning_backpack">Backpack</string>
+    <string name="fragmentPlanning_yourPlan">Your plan</string>
+    <!--fragmentDuringWalk-->
+    <string name="fragmentDuringWalk_weather">Weather</string>
+    <string name="fragmentDuringWalk_statistics">Statistics</string>
+
+    <!--yourPlanActivity-->
+    <string name="yourPlan_title">Take your decision today!</string>
+    <string name="yourPlan_chooseDate">Click to select the date</string>
+    <string name="yourPlan_string1">Start your Camino...</string>
+    <string name="yourPlan_string2">Choose The Way</string>
+    <string name="yourPlan_string3">How many kilometers?</string>
+    <string name="yourPlan_string5">Kilometers...?</string>
+    <string name="yourPlan_string4">How many days?</string>
+    <string name="yourPlan_string6">Days...?</string>
+    <string name="yourPlan_string7">How much money do you put aside for a week [$]?</string>
+    <string name="yourPlan_string8">$/per week</string>
+    <string-array name="spiner_Ways">
+        <item>Camino Frances</item>
+        <item>Camino del Norte</item>
+        <item>Camino Primitivo</item>
+        <item>Camino Inglés</item>
+        <item>Camino Portugués</item>
+        <item>Via de La Plata</item>
+    </string-array>
+
+    <!--weatherActivity-->
+    <string name="statisticsActivityTitle">Your statistics</string>
+
+    <!--weatherActivity-->
+    <string name="weatherActivityTitle">Check the weather</string>
 </resources>

@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="" />
 
             <Button
                 android:id="@+id/button4"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="" />
 
         </TableRow>
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="" />
 
             <Button
                 android:id="@+id/button2"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -79,15 +79,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:text="Pogoda" />
+                android:text="@string/fragmentDuringWalk_weather" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btn_Statistics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/fragmentDuringWalk_statistics" />
 
         </TableRow>
 

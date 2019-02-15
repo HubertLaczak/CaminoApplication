@@ -2,17 +2,27 @@ package com.example.hlaczak.caminoapplication.Model;
 
 public class SingleItem {
 
+    private String category;
     private String name;
     private String amount;
     private String weigth;
 
-    public SingleItem(String name, String amount, String weigth) {
+    public SingleItem(String category, String name, String amount, String weigth) {
+        this.category = category;
         this.name = name;
         this.amount = amount;
         this.weigth = weigth;
     }
 
     public SingleItem() {
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {

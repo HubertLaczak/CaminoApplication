@@ -8,29 +8,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.hlaczak.caminoapplication.DuringWalk.StatisticsActivity;
 import com.example.hlaczak.caminoapplication.DuringWalk.WeatherActivity;
-import com.example.hlaczak.caminoapplication.LoginActivity;
 import com.example.hlaczak.caminoapplication.R;
-import com.example.hlaczak.caminoapplication.WelcomeActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DuringWalkFragment extends Fragment {
-    Button btn_Weather;
+
+    @BindView(R.id.btn_Weather) Button btn_Weather;
+    @BindView(R.id.btn_Statistics) Button btn_Statistics;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_during_walk, container, false);
-
-        btn_Weather = view.findViewById(R.id.btn_Weather);
-        btn_Weather.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), WeatherActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+        ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @OnClick(R.id.btn_Weather)
+    public void onbtn_Weather(){
+        Intent intent = new Intent(getActivity(), WeatherActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_Statistics)
+    public void onbtn_Statistics(){
+        Intent intent = new Intent(getActivity(), StatisticsActivity.class);
+        startActivity(intent);
     }
 
 }

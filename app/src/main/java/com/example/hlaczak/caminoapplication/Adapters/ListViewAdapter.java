@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
 import com.example.hlaczak.caminoapplication.DuringPlanning.OneCategoryBackpack;
 import com.example.hlaczak.caminoapplication.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
