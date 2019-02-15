@@ -37,6 +37,13 @@
 
     <!--statisticsActivity-->
     <string name="statisticsActivityTitle">Twoje statystyki</string>
+    <string name="statisticsActivity_Add">Dodaj dzień</string>
+    <string name="statisticsActivity_noDay">Numer dnia</string>
+    <string name="statisticsActivity_km">Pokonany dystans</string>
+    <string name="statisticsActivity_spendMoney">Wydane pieniądze</string>
+    <string name="statisticsActivity_newFriends">Nowi znajomi</string>
+
+
 
     <!--weatherActivity-->
     <string name="weatherActivityTitle">Sprawdź pogodę</string>

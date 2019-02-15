@@ -11,4 +11,130 @@
         layout="@layout/bar_layout" />
 
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <Button
+            android:id="@+id/btn_AddNextStat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/statisticsActivity_Add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText7" />
+
+        <TextView
+            android:id="@+id/tv_noDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/statisticsActivity_noDay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/statisticsActivity_km"
+            app:layout_constraintStart_toStartOf="@+id/tv_noDay"
+            app:layout_constraintTop_toBottomOf="@+id/tv_noDay" />
+
+        <TextView
+            android:id="@+id/tv_spendMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/statisticsActivity_spendMoney"
+            app:layout_constraintStart_toStartOf="@+id/tv_km"
+            app:layout_constraintTop_toBottomOf="@+id/tv_km" />
+
+        <TextView
+            android:id="@+id/tv_newFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/statisticsActivity_newFriends"
+            app:layout_constraintStart_toStartOf="@+id/tv_spendMoney"
+            app:layout_constraintTop_toBottomOf="@+id/tv_spendMoney" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number|none"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_noDay"
+            app:layout_constraintStart_toStartOf="@+id/editText5"
+            app:layout_constraintTop_toTopOf="@+id/tv_noDay" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:ems="10"
+            android:inputType="number|none"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_km"
+            app:layout_constraintStart_toEndOf="@+id/tv_km"
+            app:layout_constraintTop_toTopOf="@+id/tv_km" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number|none"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_spendMoney"
+            app:layout_constraintStart_toStartOf="@+id/editText5"
+            app:layout_constraintTop_toTopOf="@+id/tv_spendMoney" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number|none"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_newFriends"
+            app:layout_constraintStart_toStartOf="@+id/editText6"
+            app:layout_constraintTop_toTopOf="@+id/tv_newFriends"
+            app:layout_constraintVertical_bias="0.423" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
 </android.support.constraint.ConstraintLayout>
+

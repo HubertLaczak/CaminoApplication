@@ -48,28 +48,23 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class OneCategoryBackpack extends AppCompatActivity {
     private Button btn_Save;
     private Button btn_Exit;
 
-//    private Button btn_Positive_Item;
-//    private Button btn_Negative_Item;
-
-        @BindView(R.id.btn_Negative_Item) Button btn_Negative_Item;
-        @BindView(R.id.btn_Positive_Item) Button btn_Positive_Item;
-
+    private Button btn_Positive_Item;
+    private Button btn_Negative_Item;
 
     private FloatingActionButton floatingButton;
     private EditText et_newName;
     private TextView tv_groupName;
     private TextView tv_Amount; //Wyświetla wartość seekbar
-//    @BindView(R.id.tv_Amount) TextView tv_Amount;
-//    @BindView(R.id.seekBar) SeekBar seekBar;
     private EditText et_Weigth;
     private EditText et_Name;
     private int et_Amount;
-
 
     private SeekBar seekBar;
 
@@ -103,8 +98,9 @@ public class OneCategoryBackpack extends AppCompatActivity {
         nameView = LayoutInflater.from(OneCategoryBackpack.this).inflate(R.layout.alert_dialog,null);
         addView = LayoutInflater.from(OneCategoryBackpack.this).inflate(R.layout.add_item_dialog,null);
 
-        View view = View.inflate(getApplicationContext(), R.layout.add_item_dialog, null);
+        View view = View.inflate(getApplicationContext(), R.layout.alert_dialog, null);
         ButterKnife.bind(this,view);
+
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         category = getIntent().getExtras().getString("Category","Category Name");
 
@@ -156,10 +152,8 @@ public class OneCategoryBackpack extends AppCompatActivity {
             }
         });
 
-
-
-//        btn_Negative_Item = findViewById(R.id.btn_Negative_Item);
-//        btn_Positive_Item = findViewById(R.id.btn_Positive_Item);
+        btn_Negative_Item = findViewById(R.id.btn_Negative_Item);
+        btn_Positive_Item = findViewById(R.id.btn_Positive_Item);
 
         tv_Amount = addView.findViewById(R.id.tv_Amount); //textview do wyświetlania postępu seekbaru
         seekBar = addView.findViewById(R.id.seekBar);
@@ -218,6 +212,7 @@ public class OneCategoryBackpack extends AppCompatActivity {
         super.onPostResume();
         refreshItemsList(this);
     }
+
 
     AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
         @Override

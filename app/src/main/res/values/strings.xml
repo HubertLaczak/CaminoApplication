@@ -33,8 +33,13 @@
         <item>Via de La Plata</item>
     </string-array>
 
-    <!--weatherActivity-->
+    <!--statisticsActivity-->
     <string name="statisticsActivityTitle">Your statistics</string>
+    <string name="statisticsActivity_Add">Add day</string>
+    <string name="statisticsActivity_noDay">Number of day</string>
+    <string name="statisticsActivity_km">Overcome distance</string>
+    <string name="statisticsActivity_spendMoney">Spended money</string>
+    <string name="statisticsActivity_newFriends">New friends</string>
 
     <!--weatherActivity-->
     <string name="weatherActivityTitle">Check the weather</string>
