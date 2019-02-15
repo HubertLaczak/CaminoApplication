@@ -162,19 +162,21 @@ public class OneCategoryBackpack extends AppCompatActivity {
         });
 
 
+
         listView = findViewById(R.id.mListView);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
         listView.setMultiChoiceModeListener(modeListener);
-        adapter = new ListViewAdapter(ItemsList, this);
-        listView.setAdapter(adapter);
-
-        ItemsList.add("one");
-        ItemsList.add("te");
 
         et_Weigth = addView.findViewById(R.id.et_Weigth);
         et_Name = addView.findViewById(R.id.et_Name);
+
         mSingleItems = new ArrayList<>();
-        refreshItemsList();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        refreshItemsList(this);
     }
 
     AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
@@ -286,6 +288,33 @@ public class OneCategoryBackpack extends AppCompatActivity {
         adItem.dismiss();
     }
 
+
+    public void refreshItemsList(final Context context){
+        final DatabaseReference databaseReference  = FirebaseDatabase.getInstance().getReference(category + "ItemsList");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mSingleItems.clear();
+                ItemsList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    SingleItem singleItem = snapshot.getValue(SingleItem.class);
+                    mSingleItems.add(singleItem);
+                    ItemsList.add(singleItem.getAmount() + "x " + singleItem.getName() + " " + singleItem.getWeigth());
+                }
+
+                adapter = new ListViewAdapter(ItemsList, context);
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
     private void countChildren(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myCount = database.getReference(category + "ItemsList");
@@ -306,22 +335,5 @@ public class OneCategoryBackpack extends AppCompatActivity {
         });
     }
 
-    public void refreshItemsList(){
-        final DatabaseReference databaseReference  = FirebaseDatabase.getInstance().getReference(category + "ItemsList");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    SingleItem singleItem = snapshot.getValue(SingleItem.class);
-                    mSingleItems.add(singleItem);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 }
